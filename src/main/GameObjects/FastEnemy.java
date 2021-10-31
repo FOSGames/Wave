@@ -8,8 +8,8 @@ public class FastEnemy extends GameObject {
 
     public FastEnemy(int x, int y, ID id) {
         super(x, y, id);
-        speedX = 8;
-        speedY = 8;
+        speedX = 9;
+        speedY = 9;
     }
 
     @Override
