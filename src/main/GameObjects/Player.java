@@ -8,7 +8,7 @@ import main.*;
 public class Player extends GameObject {
 
     // Random random = new Random();
-    Handler handler;
+    private Handler handler;
 
     public Player(int x, int y, ID id, Handler handler) {
         super(x, y, id); 
@@ -23,6 +23,9 @@ public class Player extends GameObject {
         x = Game.clamp(x, 0, Game.WIDTH - 42);
         y = Game.clamp(y, 0, Game.HEIGHT - 72);
         collision();
+        if(HUD.HEALTH == 0) {
+            handler.backToMenu();
+        }
     }
 
     private void collision() {

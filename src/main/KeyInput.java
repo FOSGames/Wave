@@ -26,7 +26,10 @@ public class KeyInput extends KeyAdapter {
                 if(key == KeyEvent.VK_D) tmpObject.setSpeedX(5);
             }
         }
-        if(key == KeyEvent.VK_ESCAPE) System.exit(0);
+        if(key == KeyEvent.VK_ESCAPE) {
+            // System.exit(0);
+            handler.backToMenu();
+        }
     }
     @Override
     public void keyReleased(KeyEvent e) {
@@ -40,7 +43,6 @@ public class KeyInput extends KeyAdapter {
                 if(key == KeyEvent.VK_A) tmpObject.setSpeedX(0);
                 if(key == KeyEvent.VK_S) tmpObject.setSpeedY(0);
                 if(key == KeyEvent.VK_D) tmpObject.setSpeedX(0);
-                
             }
         }
     }

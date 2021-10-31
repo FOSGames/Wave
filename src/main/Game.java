@@ -16,17 +16,30 @@ public class Game extends Canvas implements Runnable {
     private Handler handler;
     private HUD hud;
     private Spawn spawn;
+    private Menu menu;
+
+    public enum STATE {
+        Menu,
+        Game,
+    };
+
+    public STATE gameState = STATE.Menu;
 
     public Game() {
-        handler = new Handler();
-        this.addKeyListener(new KeyInput(handler));
-        new Window(this, WIDTH, HEIGHT, "My Game");
         hud = new HUD();
+        handler = new Handler(hud, this);
+        this.addKeyListener(new KeyInput(handler));
+        menu = new Menu(this, handler);
+        this.addMouseListener(menu);
         spawn = new Spawn(handler, hud);
-
+        new Window(this, WIDTH, HEIGHT, "My Game");
         random = new Random();
-        handler.addObject(new Player(WIDTH / 2- 32, HEIGHT / 2 - 32, ID.Player, handler));
-        handler.addObject(new BasicEnemy(random.nextInt(WIDTH / 2), random.nextInt(HEIGHT / 2), ID.BasicEnemy));
+
+        if(gameState == STATE.Game) {
+            handler.addObject(new Player(WIDTH / 2- 32, HEIGHT / 2 - 32, ID.Player, handler));
+            handler.addObject(new BasicEnemy(random.nextInt(WIDTH / 2), random.nextInt(HEIGHT / 2), ID.BasicEnemy));
+        }
+
     }
 
     public synchronized void start() {
@@ -44,9 +57,13 @@ public class Game extends Canvas implements Runnable {
     }
 
     private void tick() {
-        handler.tick();
-        hud.tick();
-        spawn.tick();
+        handler.tick(); 
+        if(gameState == STATE.Game) {
+            hud.tick();
+            spawn.tick();
+        } else if(gameState == STATE.Menu) {
+            menu.tick();
+        }
     }
     private void render() {
         BufferStrategy bs = this.getBufferStrategy();
@@ -59,7 +76,13 @@ public class Game extends Canvas implements Runnable {
         g.fillRect(0, 0, WIDTH, HEIGHT);
         
         handler.render(g);
-        hud.render(g);
+
+        if(gameState == STATE.Game) {
+            hud.render(g);
+        } else if(gameState == STATE.Menu) {
+            g.setColor(Color.white);
+            menu.render(g);
+        }
         
         g.dispose();
         bs.show();
