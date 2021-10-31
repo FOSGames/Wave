@@ -4,6 +4,8 @@ import java.awt.*;
 import java.util.LinkedList;
 
 import main.GameObjects.GameObject;
+import main.GameObjects.ID;
+import main.GameObjects.Player;
 
 public class Handler {
     public LinkedList<GameObject> object = new LinkedList<GameObject>();
@@ -26,5 +28,9 @@ public class Handler {
     }
     public void removeObject(GameObject object) {
         this.object.remove(object);
+    }
+    public void clearEnemies() {
+        object.clear();
+        addObject(new Player(Game.WIDTH / 2- 32, Game.HEIGHT / 2 - 32, ID.Player, this));
     }
 }
