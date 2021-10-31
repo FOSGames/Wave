@@ -39,6 +39,11 @@ public class Player extends GameObject {
                     HUD.HEALTH -= 2;
                 }
             }
+            if(tmpObject.getID() == ID.SmartEnemy) {
+                if(getBounds().intersects(tmpObject.getBounds())) {
+                    HUD.HEALTH -= 1;
+                }
+            }
         }
     }
 
