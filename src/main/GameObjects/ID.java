@@ -1,9 +1,5 @@
 package main.GameObjects;
 
 public enum ID {
-    Player(),
-    BasicEnemy(),
-    FastEnemy(),
-    SmartEnemy(),
-    BossEnemy1(),
+    Player(), BasicEnemy(), FastEnemy(), SmartEnemy(), BossEnemy1(),
 }

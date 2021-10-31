@@ -1,9 +1,12 @@
 package main.GameObjects;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.util.Random;
 
-import main.*;
+import main.Game;
+import main.Handler;
 
 public class BossEnemy1Bullet extends GameObject {
     private Handler handler;
@@ -21,19 +24,19 @@ public class BossEnemy1Bullet extends GameObject {
         x += speedX;
         y += speedY;
 
-        if(y >= Game.HEIGHT) {
+        if (y >= Game.HEIGHT) {
             handler.removeObject(this);
         }
     }
-    
+
     @Override
     public void render(Graphics g) {
         g.setColor(Color.white);
-        g.fillRect(x, y, 10, 10);        
+        g.fillRect(x, y, 10, 10);
     }
 
     @Override
     public Rectangle getBounds() {
         return new Rectangle(x, y, 10, 10);
-    }   
+    }
 }

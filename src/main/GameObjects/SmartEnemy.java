@@ -1,8 +1,11 @@
 package main.GameObjects;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Rectangle;
 
-import main.*;
+import main.Game;
+import main.Handler;
 
 public class SmartEnemy extends GameObject {
     // private Handler handler;
@@ -17,7 +20,7 @@ public class SmartEnemy extends GameObject {
                 this.player = handler.object.get(i);
             }
         }
-        
+
     }
 
     @Override
@@ -27,24 +30,26 @@ public class SmartEnemy extends GameObject {
 
         float diffX = (x - player.getX()) - 8;
         float diffY = (y - player.getY()) - 8;
-        float distance = (float) Math.sqrt(((x - player.getX()) * (x - player.getX())) + ((y - player.getY()) * (y - player.getY())));
+        float distance = (float) Math
+                .sqrt(((x - player.getX()) * (x - player.getX())) + ((y - player.getY()) * (y - player.getY())));
 
-        speedX = (int) Math.round((-1.0/distance) * diffX);
-        speedY = (int) Math.round((-1.0/distance) * diffY);
+        speedX = (int) Math.round((-1.0 / distance) * diffX);
+        speedY = (int) Math.round((-1.0 / distance) * diffY);
 
-
-        if(y <= 0 || y >= Game.HEIGHT - 65) speedY *= -1;
-        if(x <= 0 || x >= Game.WIDTH - 25) speedX *= -1;
+        if (y <= 0 || y >= Game.HEIGHT - 65)
+            speedY *= -1;
+        if (x <= 0 || x >= Game.WIDTH - 25)
+            speedX *= -1;
     }
-    
+
     @Override
     public void render(Graphics g) {
         g.setColor(Color.magenta);
-        g.fillRect((int) x, (int) y, 16, 16);        
+        g.fillRect((int) x, (int) y, 16, 16);
     }
 
     @Override
     public Rectangle getBounds() {
         return new Rectangle((int) x, (int) y, 16, 16);
-    }   
+    }
 }

@@ -1,10 +1,14 @@
 package main;
 
-import java.awt.*;
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.util.Random;
 
-import main.GameObjects.*;
+import main.GameObjects.BasicEnemy;
+import main.GameObjects.ID;
+import main.GameObjects.Player;
 
 public class Game extends Canvas implements Runnable {
     private static final long serialVersionUID = 1;
@@ -19,8 +23,7 @@ public class Game extends Canvas implements Runnable {
     private Menu menu;
 
     public enum STATE {
-        Menu,
-        Game,
+        Menu, Game,
     };
 
     public STATE gameState = STATE.Menu;
@@ -35,8 +38,8 @@ public class Game extends Canvas implements Runnable {
         new Window(this, WIDTH, HEIGHT, "My Game");
         random = new Random();
 
-        if(gameState == STATE.Game) {
-            handler.addObject(new Player(WIDTH / 2- 32, HEIGHT / 2 - 32, ID.Player, handler));
+        if (gameState == STATE.Game) {
+            handler.addObject(new Player(WIDTH / 2 - 32, HEIGHT / 2 - 32, ID.Player, handler));
             handler.addObject(new BasicEnemy(random.nextInt(WIDTH / 2), random.nextInt(HEIGHT / 2), ID.BasicEnemy));
         }
 
@@ -47,6 +50,7 @@ public class Game extends Canvas implements Runnable {
         mainThread.start();
         isRunning = true;
     }
+
     public synchronized void stop() {
         try {
             mainThread.join();
@@ -57,33 +61,34 @@ public class Game extends Canvas implements Runnable {
     }
 
     private void tick() {
-        handler.tick(); 
-        if(gameState == STATE.Game) {
+        handler.tick();
+        if (gameState == STATE.Game) {
             hud.tick();
             spawn.tick();
-        } else if(gameState == STATE.Menu) {
+        } else if (gameState == STATE.Menu) {
             menu.tick();
         }
     }
+
     private void render() {
         BufferStrategy bs = this.getBufferStrategy();
-        if(bs == null) {
+        if (bs == null) {
             this.createBufferStrategy(3);
             return;
         }
         Graphics g = bs.getDrawGraphics();
         g.setColor(Color.BLACK);
         g.fillRect(0, 0, WIDTH, HEIGHT);
-        
+
         handler.render(g);
 
-        if(gameState == STATE.Game) {
+        if (gameState == STATE.Game) {
             hud.render(g);
-        } else if(gameState == STATE.Menu) {
+        } else if (gameState == STATE.Menu) {
             g.setColor(Color.white);
             menu.render(g);
         }
-        
+
         g.dispose();
         bs.show();
     }
@@ -119,9 +124,9 @@ public class Game extends Canvas implements Runnable {
     }
 
     public static int clamp(int var, int min, int max) {
-        if(var >= max) {
+        if (var >= max) {
             return var = max;
-        } else if(var <= min) {
+        } else if (var <= min) {
             return var = min;
         } else {
             return var;

@@ -1,6 +1,7 @@
 package main;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Graphics;
 
 public class HUD {
     public static int HEALTH = 100;
@@ -14,6 +15,7 @@ public class HUD {
         greenValue = (HEALTH * 2);
         score++;
     }
+
     public void render(Graphics g) {
         g.setColor(Color.gray);
         g.fillRect(10, 10, 200, 2);
@@ -30,12 +32,15 @@ public class HUD {
     public int getScore() {
         return this.score;
     }
+
     public void setScore(int score) {
         this.score = score;
     }
+
     public int getLevel() {
         return this.level;
     }
+
     public void setLevel(int level) {
         this.level = level;
     }

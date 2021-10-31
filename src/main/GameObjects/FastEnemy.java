@@ -1,6 +1,8 @@
 package main.GameObjects;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Rectangle;
 
 import main.Game;
 
@@ -17,18 +19,20 @@ public class FastEnemy extends GameObject {
         x += speedX;
         y += speedY;
 
-        if(y <= 0 || y >= Game.HEIGHT - 65) speedY *= -1;
-        if(x <= 0 || x >= Game.WIDTH - 25) speedX *= -1;
+        if (y <= 0 || y >= Game.HEIGHT - 65)
+            speedY *= -1;
+        if (x <= 0 || x >= Game.WIDTH - 25)
+            speedX *= -1;
     }
-    
+
     @Override
     public void render(Graphics g) {
         g.setColor(Color.YELLOW);
-        g.fillRect(x, y, 16, 16);        
+        g.fillRect(x, y, 16, 16);
     }
 
     @Override
     public Rectangle getBounds() {
         return new Rectangle(x, y, 16, 16);
-    }   
+    }
 }

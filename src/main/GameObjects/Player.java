@@ -1,9 +1,12 @@
 package main.GameObjects;
 
-import java.awt.*;
-// import java.util.Random;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Rectangle;
 
-import main.*;
+import main.Game;
+import main.HUD;
+import main.Handler;
 
 public class Player extends GameObject {
 
@@ -11,8 +14,8 @@ public class Player extends GameObject {
     private Handler handler;
 
     public Player(int x, int y, ID id, Handler handler) {
-        super(x, y, id); 
-        this.handler = handler;       
+        super(x, y, id);
+        this.handler = handler;
     }
 
     @Override
@@ -23,7 +26,7 @@ public class Player extends GameObject {
         x = Game.clamp(x, 0, Game.WIDTH - 42);
         y = Game.clamp(y, 0, Game.HEIGHT - 72);
         collision();
-        if(HUD.HEALTH == 0) {
+        if (HUD.HEALTH == 0) {
             handler.backToMenu();
         }
     }
@@ -32,18 +35,18 @@ public class Player extends GameObject {
         for (int i = 0; i < handler.object.size(); i++) {
             GameObject tmpObject = handler.object.get(i);
             // Collision code
-            if(tmpObject.getID() == ID.BasicEnemy) {
-                if(getBounds().intersects(tmpObject.getBounds())) {
+            if (tmpObject.getID() == ID.BasicEnemy) {
+                if (getBounds().intersects(tmpObject.getBounds())) {
                     HUD.HEALTH -= 1;
                 }
             }
-            if(tmpObject.getID() == ID.FastEnemy) {
-                if(getBounds().intersects(tmpObject.getBounds())) {
+            if (tmpObject.getID() == ID.FastEnemy) {
+                if (getBounds().intersects(tmpObject.getBounds())) {
                     HUD.HEALTH -= 2;
                 }
             }
-            if(tmpObject.getID() == ID.SmartEnemy) {
-                if(getBounds().intersects(tmpObject.getBounds())) {
+            if (tmpObject.getID() == ID.SmartEnemy) {
+                if (getBounds().intersects(tmpObject.getBounds())) {
                     HUD.HEALTH -= 1;
                 }
             }
@@ -65,5 +68,5 @@ public class Player extends GameObject {
     @Override
     public Rectangle getBounds() {
         return new Rectangle(x, y, 32, 32);
-    }    
+    }
 }
