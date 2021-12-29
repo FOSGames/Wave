@@ -13,7 +13,8 @@ This is my first game built in Java!
 
 Use arrow keys to move the player and try to dodge various types of enemies.
 
-# Credits
+## Credits
+
 I learnt this game from [RealTutsGML's](https://www.codingmadesimple.com/) [YouTube](https://www.youtube.com/c/RealTutsGML) [tutorials](https://youtube.com/playlist?list=PLWms45O3n--6TvZmtFHaCWRZwEqnz2MHa).
 
 ### Developed by [Jay Nakum](https://jaynakum.github.io).
