@@ -22,14 +22,14 @@ public class KeyInput extends KeyAdapter {
             GameObject tmpObject = handler.object.get(i);
             if (tmpObject.getID() == ID.Player) {
                 // Key events for the player
-                if (key == KeyEvent.VK_W)
-                    tmpObject.setSpeedY(-5);
-                if (key == KeyEvent.VK_A)
-                    tmpObject.setSpeedX(-5);
-                if (key == KeyEvent.VK_S)
-                    tmpObject.setSpeedY(5);
-                if (key == KeyEvent.VK_D)
-                    tmpObject.setSpeedX(5);
+                if (key == KeyEvent.VK_UP)
+                    tmpObject.setSpeedY(-7);
+                if (key == KeyEvent.VK_LEFT)
+                    tmpObject.setSpeedX(-7);
+                if (key == KeyEvent.VK_DOWN)
+                    tmpObject.setSpeedY(7);
+                if (key == KeyEvent.VK_RIGHT)
+                    tmpObject.setSpeedX(7);
             }
         }
         if (key == KeyEvent.VK_ESCAPE) {
@@ -46,13 +46,13 @@ public class KeyInput extends KeyAdapter {
             GameObject tmpObject = handler.object.get(i);
             if (tmpObject.getID() == ID.Player) {
                 // Key events for the player
-                if (key == KeyEvent.VK_W)
+                if (key == KeyEvent.VK_UP)
                     tmpObject.setSpeedY(0);
-                if (key == KeyEvent.VK_A)
+                if (key == KeyEvent.VK_LEFT)
                     tmpObject.setSpeedX(0);
-                if (key == KeyEvent.VK_S)
+                if (key == KeyEvent.VK_DOWN)
                     tmpObject.setSpeedY(0);
-                if (key == KeyEvent.VK_D)
+                if (key == KeyEvent.VK_RIGHT)
                     tmpObject.setSpeedX(0);
             }
         }
