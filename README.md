@@ -1,4 +1,4 @@
-# Wave [![GitHub release (latest by date)](https://img.shields.io/github/v/release/JayNakum/Wave?label=Download&style=for-the-badge)](https://github.com/JayNakum/Wave/releases)
+# [Wave](https://github.com/JayNakum/Wave) [![GitHub release (latest by date)](https://img.shields.io/github/v/release/JayNakum/Wave?label=Download&style=for-the-badge)](https://github.com/JayNakum/Wave/releases)
 
 This is my first game built in Java!
 
