@@ -11,7 +11,7 @@ This is my first game built in Java!
 
 ## How to play?
 
-Use arrow keys to move the player and try to dodge various types of enemies.
+Use <kbd>arrow keys</kbd> to move the player and try to dodge various types of enemies.
 
 ## Credits
 
