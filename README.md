@@ -1,6 +1,6 @@
 # [Wave](https://github.com/JayNakum/Wave) [![GitHub Releases](https://img.shields.io/github/v/release/JayNakum/Wave?include_prereleases&label=Download&style=for-the-badge)](https://github.com/JayNakum/Wave/releases)
 
-This is my first game built in Java!
+This is my first dodge ball type game built in Java!
 
 ## Screenshots
 
